@@ -1,0 +1,156 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Calculator</title>
+    <style>
+        .main{
+            max-width: 400px;
+            margin: auto;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+
+          #output{
+              text-align: right;
+              height: 60px;
+              line-height: 60px;
+              padding: 16px 8px;
+              font-size: 30px;
+              background-color: lightgray;
+          }
+          .buttons{
+              display: grid;
+              grid-template-columns: 1fr 1fr 1fr  1fr;
+            gap: 10px;
+            margin: 5px 5px;
+            border-radius: 3px;
+         }
+         .input{
+             border: 1px solid #999;
+             line-height: 90px;
+             text-align: center;
+             font-size: 20px;
+             cursor: pointer;
+             background-color: orange;
+
+         }
+         .input:hover{
+             background-color: black;
+             color: white;
+         }
+         #equal{
+             background-color: lightskyblue;
+             color: white;
+         }
+
+
+
+    </style>
+</head>
+<body>
+    <section>
+       
+    <div class="main">
+
+        <div id="output"></div>
+
+        <div class="buttons">
+
+
+
+         <div class="input">C</div>
+         <div class="input">/</div>
+         <div class="input">*</div>
+         <div class="input">&larr;</div>
+         <div class="input">7</div>
+         <div class="input">8</div>
+         <div class="input">9</div>
+         
+         <div class="input">-</div>
+         <div class="input">4</div>
+         <div class="input">5</div>
+         <div class="input">6</div>
+         <div class="input">+</div>
+         <div class="input">1</div>
+         <div class="input">2</div>
+         
+         <div class="input">3</div>
+         <div class="input">.</div>
+         <div class="input">(</div>
+         <div class="input">0</div>
+         <div class="input">)</div>
+         <div class="input" id="equal">=</div>
+        
+
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+
+    </section>
+    <script>
+
+  let output = document.getElementById('output');
+  let buttons=Array.from(document.getElementsByClassName('input'));
+
+  buttons.map(input=>{
+      input.addEventListener('click', (e)=>{
+
+       switch(e.target.innerText){
+
+
+
+        case'C':
+            output.innerText='';
+             break;
+     
+
+        case'=':
+        try{
+            output.innerText=eval(output.innerText)
+
+        }
+        catch{
+            output.innerText="error"
+        }
+    
+        break;
+
+
+        case '<-':
+            if(output.innerText){
+                output.innerText=output.innerText.slice(0, -1);
+            }
+            break;
+
+
+
+        default:
+        output.innerText+=e.target.innerText;
+
+
+
+       }
+
+
+      });
+  });
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
